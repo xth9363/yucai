@@ -1,5 +1,6 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render, redirect,HttpResponse
 from main import models
+import urllib
 
 
 # Create your views here.
@@ -19,7 +20,6 @@ def index(request):
     call_address = models.OtherText.objects.get(code=8)
     about_us = models.OtherText.objects.get(code=9)
 
-
     print(index_img.content)
     return_dict["products"] = products
     return_dict["newses"] = newses
@@ -38,4 +38,8 @@ def index(request):
 
 
 def redirect_to(request):
-    return redirect(request.GET.get("url"))
+    url=request.GET.get("url")
+    if url and "guanct" not in url:
+        return redirect(urllib.parse.quote(url))
+    else:
+        return HttpResponse("使用方式:www.guanct.cn/redirect?url=https://www.baidu.com/,把想要跳转的链接填在url后面")
