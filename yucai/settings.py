@@ -123,8 +123,9 @@ USE_TZ = False# 因为无法过滤月份,改成了False
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
-
+STATIC_ROOT=os.path.join(BASE_DIR, 'static_collect')
 TEMPLATE_DIRS = (os.path.join(BASE_DIR, 'templates'),)
+
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )
