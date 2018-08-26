@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect,HttpResponse
+from django.shortcuts import render, redirect,HttpResponseRedirect,HttpResponse
 from main import models
 import urllib
 
@@ -40,6 +40,9 @@ def index(request):
 def redirect_to(request):
     url=request.GET.get("url")
     if url and "guanct" not in url:
-        return redirect(urllib.parse.quote(url))
+        return HttpResponseRedirect(url)
     else:
         return HttpResponse("使用方式:www.guanct.cn/redirect?url=https://www.baidu.com/,把想要跳转的链接填在url后面")
+
+def share_tb(request):
+    return render(request,"share.html")

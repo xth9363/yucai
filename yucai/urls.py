@@ -23,7 +23,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('ckeditor/', include('ckeditor_uploader.urls')),  # 富文本编辑器用
     path('', views.index, name="index"),
-    path('redirect', views.redirect_to, name="redirect_to")
+    path('redirect', views.redirect_to, name="redirect_to"),
+    path('share', views.share_tb, name="share"),
 
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
